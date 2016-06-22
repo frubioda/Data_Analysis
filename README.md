@@ -1,2 +1,2 @@
 # Data_Analysis
-Python, IDL, and R codes to perform data analysis
+Python and R codes to perform data analysis
