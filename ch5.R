@@ -1,7 +1,7 @@
 ##Exercise chapter5
 library(pracma)
 
-cd('~/job_interviews/StatisticalLearning/chapter5')
+cd('~/StatisticalLearning/chapter5')
 load("5.R.RData")
 ls()
 names(Xy); head(Xy); tail(Xy)
