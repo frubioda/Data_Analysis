@@ -1,2 +1,2 @@
-# Data_Analysis
-Python and R codes to perform data analysis
+# An Introduction to Statistical Learning, with Applications in R
+R codes to perform exercises
