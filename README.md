@@ -1,2 +1,2 @@
-# An Introduction to Statistical Learning, with Applications in R
-R codes to perform exercises
+# SQL
+SQLite codes to perform exercises
