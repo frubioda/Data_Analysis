@@ -1,0 +1,39 @@
+/* It's time for the seniors to graduate. Remove all 12th graders from Highschooler. */
+DELETE FROM Highschooler
+ WHERE grade = 12;
+
+SELECT *
+ FROM Highschooler
+ ORDER BY ID;
+
+/* If two students A and B are friends, and A likes B but not vice-versa, remove the Likes tuple. */
+DELETE FROM likes
+ WHERE exists (SELECT 1
+   FROM friend
+   WHERE friend.id1 = likes.id1 AND friend.id2 = likes.id2)
+ AND not exists (SELECT 1
+   FROM likes as L2
+   WHERE L2.id1 = likes.id2 AND L2.id2=likes.id1);
+
+SELECT H1.name, H1.grade, H2.name, H2.grade
+ FROM Likes L, Highschooler H1, Highschooler H2
+ WHERE L.ID1 = H1.ID and L.ID2 = H2.ID
+ ORDER BY H1.name, H1.grade;
+
+/* For all cases where A is friends with B, and B is friends with C, add a new friendship for the pair A and C. Do not add duplicate friendships, friendships that already exist, or friendships with oneself. (This one is a bit challenging; congratulations if you get it right.) */
+INSERT INTO Friend (id1, id2)
+ SELECT DISTINCT i1, i2
+ FROM (SELECT F1.id1 as i1, F2.id2 as i2
+   FROM friend F1
+   JOIN friend F2 ON F1.id2 = F2.id1) as T
+ WHERE T.i1 != t.i2
+ AND not exists (SELECT 1 from Friend
+   WHERE id1=i1 AND id2=i2)
+ AND not exists (SELECT 1 from Friend
+   WHERE id2=i1 AND id1=i2);
+
+SELECT ID, name, grade, (SELECT count(*)
+    FROM Friend
+    WHERE id1 = H.id)
+  FROM Highschooler H
+  ORDER BY ID
