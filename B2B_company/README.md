@@ -1,4 +1,4 @@
-# Data Science Coding Challenge 1: Data Analysis
+# Data Science Coding Challenge:
 
 The file contains a list of businesses which are fairly representative of data from external data providers. 
 Each business has the following fields:
