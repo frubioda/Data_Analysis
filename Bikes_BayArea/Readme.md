@@ -1,4 +1,4 @@
-*** FILE LIST
+### FILE LIST
 1) 201508_status_data.csv – approx. 37 million records of bike and dock availability by minute
 2) 201508_station_data.csv – 70 records – station ID, name, latitude, longitude, dockcount, city, installation date
 3) 201508_trip_data.csv – approx. 354,000 records of individual trips
