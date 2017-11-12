@@ -6,4 +6,5 @@ The data has 5 columns:
 - uid: unique id assigned to users (if the string is purely numeric, this means the user is registered, otherwise it's a device id)
 - isFirst: true if this is the user's first ping ever (some users have been using the app before February)
 - utmSource: traffic source from which the user came. <br>
+
 The dates are based on Pacific time. So, for example, the minimum timestamp corresponds to midnight February 1st in Pacific time, not GMT.
