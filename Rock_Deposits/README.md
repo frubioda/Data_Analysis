@@ -93,3 +93,24 @@ python3 -m pytest test_functions_kdtree.py
   * Better lithology classification (true serpentinite vs ultramafic subtypes)
   * Weight contacts by geological importance
   * Handle near-miss contacts more robustly
+
+## AI Usage & Transparency
+
+AI tools were used to support development, debugging, and documentation of this project.
+
+### Tools used
+
+* **ChatGPT (OpenAI)**
+
+### How AI was used
+
+* Assisted in designing the **overall approach** (contact-based prospectivity model). I initially tried a K-Nearest Neighbors approach, but OpenAI showed me that with cKDTree I obtain the almost identical results in a faster way.
+* Helped refine **Python functions** (e.g. contact extraction, sampling, cKDTree workflow)
+* Supported **debugging**, particularly with geometry edge cases (e.g. `GeometryCollection`, `MultiPoint`)
+* Generated initial versions of **unit tests** and **README documentation**
+
+### Validation & refinement
+
+* All AI-generated code was **reviewed and modified manually**
+* Functions were tested using **synthetic geometries** and **pytest unit tests**
+* Outputs (heatmaps and likelihood values) were visually inspected and checked for **logical consistency** (e.g. highest likelihood near contacts, decay with distance)
