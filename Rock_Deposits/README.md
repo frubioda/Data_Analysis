@@ -57,6 +57,12 @@ python3 -m pytest test_functions_kdtree.py
 └── README.md
 ```
 
+## Output
+
+* Likelihood of cobalt occurring at a specific point based on the proximity of any two sets of rock types, with an adjustable fall-off distance parameter
+* 2D heatmap of cobalt likelihood
+* Values range from **0 (low)** to **1 (high near contacts)**
+
 ## Next Steps
 
 * **Multi-layer prospectivity modeling**
@@ -87,8 +93,3 @@ python3 -m pytest test_functions_kdtree.py
   * Better lithology classification (true serpentinite vs ultramafic subtypes)
   * Weight contacts by geological importance
   * Handle near-miss contacts more robustly
-
-## Output
-
-* 2D heatmap of cobalt likelihood
-* Values range from **0 (low)** to **1 (high near contacts)**
