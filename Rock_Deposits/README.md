@@ -2,38 +2,25 @@
 
 A spatial model to estimate the **cobalt deposit likelihood** based on proximity to geological contacts between two types of rocks.
 
-We will focus on ultramafic rocks (including serpentinite rocks) and granodiorite rocks to estimate the likelihood in the whole area, creating a probability heatmap.
----
+We focus on **ultramafic rocks** (including serpentinite rocks) and **granodiorite rocks** to estimate the likelihood in the whole area, creating a probability heatmap.
+
+## Input Data
+
+The model uses a geological dataset stored in a GeoPackage (gpkg format), containing the geometry type: Polygon (geological units), the coordinate system: Projected CRS (units in meters, required for distance calculations), and rock_type describing the lithology, among other parameters.
 
 ## Approach
+
+We estimate the distance between the polygon boundaries of two rock types. At the intersection the probability of getting cobalt deposit is 1. We apply a smooth function to decrease the probability with the distance, such that at a inputed fall-off distance the likelihood of getting cobalt deposit is 0.
 
 * Extract **contacts** by intersecting polygon boundaries of the two rock types
 * Convert contacts into **sampled points**
 * Use **`cKDTree`** for fast nearest-neighbor distance computation
 * Apply a **quadratic decay function**:
-
   * Likelihood = **1 at contact**
   * Likelihood → **0 at 10 km (fall-off distance)**
-* Generate a **grid-based heatmap** of likelihood values
+* * Generate a **grid-based heatmap** of likelihood values focusing on **ultramafic rocks (proxy for serpentinite)** and **granodiorite**.
 
-**ultramafic rocks (proxy for serpentinite)** and **granodiorite**.
-
----
-
-## ⚠️ Limitations
-
-* **Single-factor model**
-  Only considers contact proximity (ignores structure, alteration, geochemistry)
-
-* **Simplified lithology**
-  Treats all ultramafic rocks as serpentinite
-
-* **Generic decay function**
-  Not calibrated to real cobalt occurrences
-
----
-
-## ▶️ Usage
+## Usage
 
 ### Install dependencies
 
@@ -47,9 +34,9 @@ pip install geopandas shapely scipy matplotlib pytest
 jupyter notebook
 ```
 
-Open `notebook.ipynb` to:
+Open `cobalt_likelihood_kdtree.ipynb` to:
 
-* Load data (`BedrockP.gpkg`)
+* Load data
 * Generate heatmap
 * Visualize results
 
@@ -61,20 +48,20 @@ python3 -m pytest test_functions_kdtree.py
 
 ---
 
-## 📁 Structure
+## Structure
 
 ```
 .
-├── functions_kdtree.py      # core model functions
-├── test_functions_kdtree.py # unit tests
-├── notebook.ipynb           # example workflow
-├── BedrockP.gpkg            # input data
+├── functions_kdtree.py              # core model functions
+├── test_functions_kdtree.py         # unit tests
+├── cobalt_likelihood_kdtree.ipynb   # example workflow
+├── input_file.gpkg                  # input data
 └── README.md
 ```
 
 ---
 
-## 🚀 Next Steps
+## Next Steps
 
 * **Multi-layer prospectivity modeling**
   Incorporate additional predictors:
@@ -87,12 +74,11 @@ python3 -m pytest test_functions_kdtree.py
 
   * Use known cobalt occurrences to tune decay parameters
   * Compare different distance functions (exponential, Gaussian)
-  * Add cross-validation / ROC analysis
+  * Add cross-validation / ROC analysis pending we have some true values to train the algorithm.
 
 * **Advanced spatial methods**
 
-  * Replace distance-only model with **machine learning** (e.g. Random Forest, XGBoost)
-  * Use raster-based workflows for scalability (e.g. `rasterio`, `xarray`)
+  * Replace distance-only model with **machine learning** (e.g. Random Forest, XGBoost) pending we have some true values to train the algorithm.
 
 * **Performance optimization**
 
@@ -108,7 +94,7 @@ python3 -m pytest test_functions_kdtree.py
 
 ---
 
-## ✅ Output
+## Output
 
 * 2D heatmap of cobalt likelihood
 * Values range from **0 (low)** to **1 (high near contacts)**
