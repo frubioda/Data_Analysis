@@ -2,7 +2,7 @@
 
 A spatial model to estimate the **cobalt deposit likelihood** based on proximity to geological contacts between two types of rocks.
 
-We will focus on **ultramafic rocks (proxy for serpentinite)** and **granodiorite** rocks to estimate the likelihood in the whole area, creating a probability heatmap.
+We will focus on ultramafic rocks (including serpentinite rocks) and granodiorite rocks to estimate the likelihood in the whole area, creating a probability heatmap.
 ---
 
 ## Approach
