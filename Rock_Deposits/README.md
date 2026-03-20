@@ -46,8 +46,6 @@ Open `cobalt_likelihood_kdtree.ipynb` to:
 python3 -m pytest test_functions_kdtree.py
 ```
 
----
-
 ## Structure
 
 ```
@@ -58,8 +56,6 @@ python3 -m pytest test_functions_kdtree.py
 ├── input_file.gpkg                  # input data
 └── README.md
 ```
-
----
 
 ## Next Steps
 
@@ -92,11 +88,7 @@ python3 -m pytest test_functions_kdtree.py
   * Weight contacts by geological importance
   * Handle near-miss contacts more robustly
 
----
-
 ## Output
 
 * 2D heatmap of cobalt likelihood
 * Values range from **0 (low)** to **1 (high near contacts)**
-
----
